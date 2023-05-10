@@ -183,20 +183,7 @@ The Checker will be released at the end of the project (1-2 days before the dead
 Tasks
 -----
 
-### 0\. README, man, AUTHORS
-
-mandatory
-
--   Write a `README`
--   Write a `man` for your shell.
--   You should have an `AUTHORS` file at the root of your repository, listing all individuals having contributed content to the repository. Format, see [Docker](https://alx-intranet.hbtn.io/rltoken/UL8J3kgl7HBK_Z9iBL3JFg "Docker")
-
-**Repo:**
-
--   GitHub repository: `simple_shell`
--   File: `README.md, man_1_simple_shell, AUTHORS`
-
-### 1\. Betty would be proud
+### 0\. Betty would be proud
 
 mandatory
 
@@ -206,7 +193,7 @@ Write a beautiful code that passes the Betty checks
 
 -   GitHub repository: `simple_shell`
 
-### 2\. Simple shell 0.1
+### 1\. Simple shell 0.1
 
 mandatory
 
@@ -255,13 +242,13 @@ env-environ.c  exec    fork    mypid   ppid   printenv  promptc  shell     stat 
 ```
 **Repo:**
 -   GitHub repository: `simple_shell`
-### 3\. Simple shell 0.2
+### 2\. Simple shell 0.2
 mandatory
 Simple shell 0.1 +
 -   Handle command lines with arguments
 **Repo:**
 -   GitHub repository: `simple_shell`
-### 4\. Simple shell 0.3
+### 3\. Simple shell 0.3
 mandatory
 Simple shell 0.2 +
 -   Handle the `PATH`
@@ -287,7 +274,7 @@ julien@ubuntu:~/shell$
 ```
 **Repo:**
 -   GitHub repository: `simple_shell`
-### 5\. Simple shell 0.4
+### 4\. Simple shell 0.4
 mandatory
 Simple shell 0.3 +
 -   Implement the `exit` built-in, that exits the shell
@@ -295,7 +282,7 @@ Simple shell 0.3 +
 -   You don't have to handle any argument to the built-in `exit`
 **Repo:**
 -   GitHub repository: `simple_shell`
-### 6\. Simple shell 1.0
+### 5\. Simple shell 1.0
 mandatory
 Simple shell 0.4 +
 -   Implement the `env` **built-in**, that prints the current environment
