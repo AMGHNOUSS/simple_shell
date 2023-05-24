@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 
 /**
  * c_exit - frees user's typed command and linked list before exiting

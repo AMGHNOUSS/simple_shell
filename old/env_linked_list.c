@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 
 /**
  * env_linked_list - creates a linked list from enviroment variables

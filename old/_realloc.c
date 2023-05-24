@@ -1,13 +1,11 @@
-#include "shell.h"
-
+#include "main.h"
 /**
- * _realloc - allocate memory and set all values to 0
+ * _realloc - reallocates a memory
  * @ptr: pointer to the memory previously allocated
- * @old_size: size previously allocated
- * @new_size: new size to reallocate
- * Return: pointer to reallocated memory
+ * @old_size: Integer
+ * @new_size: Integer
+ * Return: pointer to the address
  */
-
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
 	void *p;
@@ -30,14 +28,11 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 		else
 			return (p);
 	}
-
 	p = malloc(new_size);
 	if (p == NULL)
 		return (NULL);
-
 	for (i = 0; i < old_size && i < new_size; i++)
 		*((char *)p + i) = *((char *)ptr + i);
 	free(ptr);
-
 	return (p);
 }

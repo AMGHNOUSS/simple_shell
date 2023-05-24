@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 
 /**
  * free_double_ptr - free malloced arrays

@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 
 /**
  * _which - fleshes out command by appending it to a matching PATH directory

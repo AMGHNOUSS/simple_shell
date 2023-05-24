@@ -1,7 +1,7 @@
-#include "shell.h"
+#include "main.h"
 
 /**
- * main - creates a simple shell
+ * main - create a simple shell
  * @ac: argument count
  * @av: argument vectors
  * @env: environmental variables
@@ -13,6 +13,5 @@ int main(int ac, char **av, char **env)
 	(void)av;
 
 	prompt(env);
-
 	return (0);
 }

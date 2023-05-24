@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 
 /**
  * c_ignore - custom ignores spaces and newlines

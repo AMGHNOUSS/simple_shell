@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 
 /**
  * ctrl_c - ignore Ctrl-C input and prints prompt again
@@ -12,6 +12,7 @@ void ctrl_c(int n)
 
 /**
  * built_in - handles builtins
+ * @token: Sirng pointer
  * @env: enviroment variable
  * @num: take in nth user command typed to write error message
  * @command: command to free

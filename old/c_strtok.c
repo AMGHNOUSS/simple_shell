@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 
 /**
  * c_t_size - returns number of delim

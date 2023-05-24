@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 
 /**
  * t_strlen - returns token's string length for mallocing
