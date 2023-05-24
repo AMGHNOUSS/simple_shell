@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 
 /**
  * c_strcat - concatenate two strings ignoring the first character

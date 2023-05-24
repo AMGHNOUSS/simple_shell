@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "mai:116n.h"
 
 /**
  * ctrl_c - ignore Ctrl-C input and prints prompt again
@@ -113,7 +113,7 @@ int prompt(char **en)
 			continue;
 		}
 		token = NULL;
-		token = _str_tok(command, " ");
+		token = c_str_tokenize(command, " ");
 		if (n_command != NULL)
 			free(n_command);
 		xt = built_in(token, env, cdn, NULL);
