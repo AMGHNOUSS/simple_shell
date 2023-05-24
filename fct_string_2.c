@@ -37,7 +37,6 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 			return (NULL);
 	}
 }
-
 /**
  * c_token_count - Counts the number of delimiters in a string.
  * @str: User's command typed into the shell.
@@ -45,18 +44,31 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
  *
  * Return: Number of tokens.
  */
-int c_token_count(char *str, char delim)
+int c_token_count(char *str, char delm)
 {
-	int count = 0;
+	int x = 0, dlm = 0;
 
-	while (*str != '\0')
+	while (str[x] != '\0')
 	{
-		if (*str == delim)
-			count++;
-		str++;
+		if ((str[x] == delm) && (str[x + 1] != delm))
+			dlm++;
+		if ((str[x] == delm) && (str[x + 1] == '\0'))
+			dlm--;
+		x++;
 	}
-
-	return count;
+	return (dlm);
+}
+/**
+ * ignore_delm - returns a version of string without preceeding delims
+ * @str: string
+ * @delm: delimiter
+ * Return: new string
+ **/
+char *ignore_delm(char *str, char delm)
+{
+	while (*str == delm)
+		str++;
+	return (str);
 }
 
 /**
@@ -66,42 +78,44 @@ int c_token_count(char *str, char delim)
  *
  * Return: An array of tokens.
  */
-
 char **c_str_tokenize(char *str, char *delim)
 {
-	int buffer_size = 0, i = 0, j = 0, k = 0, len = 0;
-	char **tokens = NULL, delim_char;
+	int bs = 0, p = 0, q = 0, r = 0, sz = 0, se = 0, t = 0;
+	char **toks = NULL, d_ch;
 
-	delim_char = delim[0];
-	buffer_size = c_token_count(str, delim_char);
-	tokens = malloc(sizeof(char *) * (buffer_size + 2));
-	if (tokens == NULL)
-		return NULL;
-
-	while (str[len] != '\0')
-		len++;
-
-	while (j < len)
+	d_ch = delm[0];
+	str = ignore_delm(str, d_ch);
+	bs = t_size(str, d_ch);
+	toks = malloc(sizeof(char *) * (bs + 2));
+	if (toks == NULL)
+		return (NULL);
+	while (str[se] != '\0')
+		se++;
+	while (q < se)
 	{
-		k = token_length(str, j, delim_char);
-		tokens[i] = malloc(sizeof(char) * (k + 1));
-		if (tokens[i] == NULL)
-			return (NULL);
-
-		k = 0;
-		while ((str[j] != delim_char) && (str[j] != '\0'))
+		if (str[q] != d_ch)
 		{
-			tokens[i][k] = str[j];
-			k++;
-			j++;
+			sz = t_strlen(str, q, d_ch);
+			toks[p] = malloc(sizeof(char) * (sz + 1));
+			if (toks[p] == NULL)
+				return (NULL);
+			r = 0;
+																							while ((str[q] != d_ch) && (str[q] != '\0'))
+		{
+			toks[p][r] = str[q];
+			r++;
+			q++;
 		}
-		tokens[i][k] = '\0';
-		i++;
-		j++;
+		toks[p][r] = '\0';
+		t++;
+		}
+		if (q < se && (str[q + 1] != d_ch && str[q + 1] != '\0'))
+			p++;
+		q++;
 	}
-
-	tokens[i] = NULL;
-	return (tokens);
+	p++;
+	toks[p] = NULL;
+	return (toks);
 }
 
 /**
@@ -126,15 +140,15 @@ int c_t_size(char *str, char delm)
 }
 
 /**
- * c_str_tok - tokenizes a string even the continuois delim with empty string 
- * @str: user's command typed into shell 
- * @delm: delimeter
- * Return: an array of tokens
+ * c_str_tok - tokenizes a string.
+ * @str: Strring
+ * @delm: String
+ * Return: an array of String
  */
 char **c_str_tok(char *str, char *delm)
 {
 	int bs == 0, p = 0, q = 0, r = 0, s = 0, t = 0;
-	char **toks = NULL, d_dch;
+	char **toks = NULL, d_ch;
 
 	d_ch = delm[0];
 	bs = c_t_size(str, d_ch);
@@ -148,12 +162,16 @@ char **c_str_tok(char *str, char *delm)
 		if (toks[p] == NULL)
 			return (NULL);
 		r = 0;
-		while ((str[q] != d_ch) &&
-				(str[q] != '\0'))
+		while ((str[q] != d_ch) && (str[q] != '\0'))
 		{
 			toks[p][r] = str[q];
 			r++;
 			q++;
 		}
+		toks[p][r] = '\0';
+		p++;
+		q++;
+	}
 		toks[p] = NULL;
 		return (toks);
+}
