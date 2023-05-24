@@ -3,5 +3,6 @@
 t_strlen -----> t_strlen
 my_strcmp ----> _strcmp
 *my_strcat ---> *_strcat
-**_str_tok -----> 
+**_str_tok -----> c_str_tokenize
 **c_str_tok -----> **c_str_tok
+main.c --------> main.c

@@ -34,5 +34,8 @@ char *_strcpy(char *dest, char *src);
 int my_strcmp(char *s1, char *s2);
 size_t get_line(char **str);
 char *ignore_space(char *str);
+int prompt(char **env);
+char **c_str_tokenize(char *str, char *delm);
+char **c_str_tok(char *str, char *delm);
 
 #endif
