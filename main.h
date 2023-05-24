@@ -28,14 +28,14 @@ typedef struct list
 
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 int t_strlen(char *str, int pos, char delm);
-char *my_strcat(char *dest, char *src);
+char *_strcat(char *dest, char *src);
 char *_strdup(char *str);
 char *_strcpy(char *dest, char *src);
-int my_strcmp(char *s1, char *s2);
+int _strcmp(char *s1, char *s2);
 size_t get_line(char **str);
 char *ignore_space(char *str);
 int prompt(char **env);
-char **c_str_tokenize(char *str, char *delm);
+char **_str_tok(char *str, char *delm);
 char **c_str_tok(char *str, char *delm);
 int _cd(char **str, list_t *env, int num);
 int built_in(char **token, list_t *env, int num, char **command);

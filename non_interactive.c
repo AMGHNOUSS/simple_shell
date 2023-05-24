@@ -30,7 +30,7 @@ void non_interactive(list_t *env)
 	}
 	n_command = command;
 	command = c_ignore(command);
-	n_line = c_str_tokenize(command, "\n");
+	n_line = _str_tok(command, "\n");
 	if (n_command != NULL)
 		free(n_command);
 	q = 0;
@@ -38,7 +38,7 @@ void non_interactive(list_t *env)
 	{
 		cdn++;
 		token = NULL;
-		token = c_str_tokenize(n_line[q], " ");
+		token = _str_tok(n_line[q], " ");
 		xt = built_in(token, env, cdn, n_line);
 		if (xt)
 		{

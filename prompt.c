@@ -1,4 +1,4 @@
-#include "mai:116n.h"
+#include "main.h"
 
 /**
  * ctrl_c - ignore Ctrl-C input and prints prompt again
@@ -12,6 +12,7 @@ void ctrl_c(int n)
 
 /**
  * built_in - handles builtins
+ * @token: Sirng pointer
  * @env: enviroment variable
  * @num: take in nth user command typed to write error message
  * @command: command to free
@@ -113,7 +114,7 @@ int prompt(char **en)
 			continue;
 		}
 		token = NULL;
-		token = c_str_tokenize(command, " ");
+		token = _str_tok(command, " ");
 		if (n_command != NULL)
 			free(n_command);
 		xt = built_in(token, env, cdn, NULL);
