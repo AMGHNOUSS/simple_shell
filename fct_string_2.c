@@ -144,3 +144,16 @@ char **c_str_tok(char *str, char *delm)
 	while (q < t)
 	{
 		s = t_strlen(str, q, d_ch);
+		toks[p] = malloc(sizeof(char) * (s + 1));
+		if (toks[p] == NULL)
+			return (NULL);
+		r = 0;
+		while ((str[q] != d_ch) &&
+				(str[q] != '\0'))
+		{
+			toks[p][r] = str[q];
+			r++;
+			q++;
+		}
+		toks[p] = NULL;
+		return (toks);
