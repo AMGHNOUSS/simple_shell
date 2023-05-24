@@ -52,11 +52,8 @@ char *my_strcat(char *destination, char *source)
 	int len_dest = my_strlen(destination);
 
 	new_string = malloc(sizeof(*new_string) * (len_dest + len_source + 1));
-
 	my_strcpy(destination, new_string);
-
 	my_strcpy(source, new_string + len_dest);
-
 	new_string[len_dest + len_source] = '\0';
 	return (new_string);
 }
@@ -73,14 +70,14 @@ int my_strspn(char *str1, char *str2)
 	int i = 0;
 	int match = 0;
 
-while (str1[i] != '\0')
-{
-	if (my_strchr(str2, str1[1]) == NULL)
-		break;
-	match++;
-	i++;
-}
-return (match);
+	while (str1[i] != '\0')
+	{
+		if (my_strchr(str2, str1[1]) == NULL)
+			break;
+		match++;
+		i++;
+	}
+	return (match);
 }
 
 /**
@@ -100,4 +97,37 @@ char *my_strchr(char *s, char c)
 		return (s + i);
 	else
 		return (NULL);
+}
+/**
+ * _strlen - count length
+ * @string: string
+ * Return: length of the string
+ */
+
+int _strlen(char *string)
+{
+	int len = 0;
+
+	if (string == NULL)
+		return (len);
+	for (; string[len] != '\0'; len++)
+		;
+	return (len);
+}
+/**
+ * _strcpy - copies the string pointer
+ * @dest: String
+ * @src: String
+ * Return: String
+ */
+
+char *_strcpy(char *dest, char *src)
+{
+	int x, sz;
+
+	for (sz = 0; src[sz] != '\0'; sz++)
+		;
+	for (x = 0; x <= sz; x++)
+		dest[x] = src[x];
+	return (dest);
 }
