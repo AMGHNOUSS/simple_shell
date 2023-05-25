@@ -5,15 +5,15 @@
  *
  * @h: head of linked list
  * @in: input string
- * @data: data structure
+ * @lists: lists structure
  * Return: no return
  */
-void check_env(r_var **h, char *in, data_shell *data)
+void check_env(r_var **h, char *in, lists_shell *lists)
 {
 	int row, chr, j, lval;
 	char **_envr;
 
-	_envr = data->_environ;
+	_envr = lists->_environ;
 	for (row = 0; _envr[row]; row++)
 	{
 		for (j = 1, chr = 0; _envr[row][chr]; chr++)
@@ -47,15 +47,15 @@ void check_env(r_var **h, char *in, data_shell *data)
  * @h: head of the linked list
  * @in: input string
  * @st: last status of the Shell
- * @data: data structure
+ * @lists: lists structure
  * Return: no return
  */
-int check_vars(r_var **h, char *in, char *st, data_shell *data)
+int check_vars(r_var **h, char *in, char *st, lists_shell *lists)
 {
 	int i, lst, lpd;
 
 	lst = _strlen(st);
-	lpd = _strlen(data->pid);
+	lpd = _strlen(lists->pid);
 
 	for (i = 0; in[i]; i++)
 	{
@@ -64,7 +64,7 @@ int check_vars(r_var **h, char *in, char *st, data_shell *data)
 			if (in[i + 1] == '?')
 				add_rvar_node(h, 2, st, lst), i++;
 			else if (in[i + 1] == '$')
-				add_rvar_node(h, 2, data->pid, lpd), i++;
+				add_rvar_node(h, 2, lists->pid, lpd), i++;
 			else if (in[i + 1] == '\n')
 				add_rvar_node(h, 0, NULL, 0);
 			else if (in[i + 1] == '\0')
@@ -76,7 +76,7 @@ int check_vars(r_var **h, char *in, char *st, data_shell *data)
 			else if (in[i + 1] == ';')
 				add_rvar_node(h, 0, NULL, 0);
 			else
-				check_env(h, in + i, data);
+				check_env(h, in + i, lists);
 		}
 	}
 
@@ -139,19 +139,19 @@ char *replaced_input(r_var **head, char *input, char *new_input, int nlen)
  * rep_var - calls functions to replace string into vars
  *
  * @input: input string
- * @datash: data structure
+ * @listssh: lists structure
  * Return: replaced string
  */
-char *rep_var(char *input, data_shell *datash)
+char *rep_var(char *input, lists_shell *listssh)
 {
 	r_var *head, *indx;
 	char *status, *new_input;
 	int olen, nlen;
 
-	status = aux_itoa(datash->status);
+	status = aux_itoa(listssh->status);
 	head = NULL;
 
-	olen = check_vars(&head, input, status, datash);
+	olen = check_vars(&head, input, status, listssh);
 
 	if (head == NULL)
 	{

@@ -37,11 +37,11 @@ char *without_comment(char *in)
 
 /**
  * shell_loop - Loop of shell
- * @datash: data relevant (av, input, args)
+ * @listssh: lists relevant (av, input, args)
  *
  * Return: no return.
  */
-void shell_loop(data_shell *datash)
+void shell_loop(lists_shell *listssh)
 {
 	int loop, i_eof;
 	char *input;
@@ -57,15 +57,15 @@ void shell_loop(data_shell *datash)
 			if (input == NULL)
 				continue;
 
-			if (check_syntax_error(datash, input) == 1)
+			if (check_syntax_error(listssh, input) == 1)
 			{
-				datash->status = 2;
+				listssh->status = 2;
 				free(input);
 				continue;
 			}
-			input = rep_var(input, datash);
-			loop = split_commands(datash, input);
-			datash->counter += 1;
+			input = rep_var(input, listssh);
+			loop = split_commands(listssh, input);
+			listssh->counter += 1;
 			free(input);
 		}
 		else

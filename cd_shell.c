@@ -3,15 +3,15 @@
 /**
  * cd_shell - changes current directory
  *
- * @datash: data relevant
+ * @listssh: lists relevant
  * Return: 1 on success
  */
-int cd_shell(data_shell *datash)
+int cd_shell(lists_shell *listssh)
 {
 	char *dir;
 	int ishome, ishome2, isddash;
 
-	dir = datash->args[1];
+	dir = listssh->args[1];
 
 	if (dir != NULL)
 	{
@@ -22,23 +22,23 @@ int cd_shell(data_shell *datash)
 
 	if (dir == NULL || !ishome || !ishome2 || !isddash)
 	{
-		cd_to_home(datash);
+		cd_to_home(listssh);
 		return (1);
 	}
 
 	if (_strcmp("-", dir) == 0)
 	{
-		cd_previous(datash);
+		cd_previous(listssh);
 		return (1);
 	}
 
 	if (_strcmp(".", dir) == 0 || _strcmp("..", dir) == 0)
 	{
-		cd_dot(datash);
+		cd_dot(listssh);
 		return (1);
 	}
 
-	cd_to(datash);
+	cd_to(listssh);
 
 	return (1);
 }

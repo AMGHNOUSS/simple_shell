@@ -1,53 +1,53 @@
 #include "main.h"
 
 /**
- * free_data - frees data structure
+ * free_lists - frees lists structure
  *
- * @datash: data structure
+ * @listssh: lists structure
  * Return: no return
  */
-void free_data(data_shell *datash)
+void free_lists(lists_shell *listssh)
 {
 	unsigned int i;
 
-	for (i = 0; datash->_environ[i]; i++)
+	for (i = 0; listssh->_environ[i]; i++)
 	{
-		free(datash->_environ[i]);
+		free(listssh->_environ[i]);
 	}
 
-	free(datash->_environ);
-	free(datash->pid);
+	free(listssh->_environ);
+	free(listssh->pid);
 }
 
 /**
- * set_data - Initialize data structure
+ * set_lists - Initialize lists structure
  *
- * @datash: data structure
+ * @listssh: lists structure
  * @av: argument vector
  * Return: no return
  */
-void set_data(data_shell *datash, char **av)
+void set_lists(lists_shell *listssh, char **av)
 {
 	unsigned int i;
 
-	datash->av = av;
-	datash->input = NULL;
-	datash->args = NULL;
-	datash->status = 0;
-	datash->counter = 1;
+	listssh->av = av;
+	listssh->input = NULL;
+	listssh->args = NULL;
+	listssh->status = 0;
+	listssh->counter = 1;
 
 	for (i = 0; environ[i]; i++)
 		;
 
-	datash->_environ = malloc(sizeof(char *) * (i + 1));
+	listssh->_environ = malloc(sizeof(char *) * (i + 1));
 
 	for (i = 0; environ[i]; i++)
 	{
-		datash->_environ[i] = _strdup(environ[i]);
+		listssh->_environ[i] = _strdup(environ[i]);
 	}
 
-	datash->_environ[i] = NULL;
-	datash->pid = aux_itoa(getpid());
+	listssh->_environ[i] = NULL;
+	listssh->pid = aux_itoa(getpid());
 }
 
 /**
@@ -60,14 +60,14 @@ void set_data(data_shell *datash, char **av)
  */
 int main(int ac, char **av)
 {
-	data_shell datash;
+	lists_shell listssh;
 	(void) ac;
 
 	signal(SIGINT, get_sigint);
-	set_data(&datash, av);
-	shell_loop(&datash);
-	free_data(&datash);
-	if (datash.status < 0)
+	set_lists(&listssh, av);
+	shell_loop(&listssh);
+	free_lists(&listssh);
+	if (listssh.status < 0)
 		return (255);
-	return (datash.status);
+	return (listssh.status);
 }

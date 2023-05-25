@@ -2,30 +2,30 @@
 
 /**
  * get_error - calls the error according the builtin, syntax or permission
- * @datash: data structure that contains arguments
+ * @listssh: lists structure that contains arguments
  * @eval: error value
  * Return: error
  */
-int get_error(data_shell *datash, int eval)
+int get_error(lists_shell *listssh, int eval)
 {
 	char *error;
 
 	switch (eval)
 	{
 	case -1:
-		error = error_env(datash);
+		error = error_env(listssh);
 		break;
 	case 126:
-		error = error_path_126(datash);
+		error = error_path_126(listssh);
 		break;
 	case 127:
-		error = error_not_found(datash);
+		error = error_not_found(listssh);
 		break;
 	case 2:
-		if (_strcmp("exit", datash->args[0]) == 0)
-			error = error_exit_shell(datash);
-		else if (_strcmp("cd", datash->args[0]) == 0)
-			error = error_get_cd(datash);
+		if (_strcmp("exit", listssh->args[0]) == 0)
+			error = error_exit_shell(listssh);
+		else if (_strcmp("cd", listssh->args[0]) == 0)
+			error = error_get_cd(listssh);
 		break;
 	}
 
@@ -35,6 +35,6 @@ int get_error(data_shell *datash, int eval)
 		free(error);
 	}
 
-	datash->status = eval;
+	listssh->status = eval;
 	return (eval);
 }
